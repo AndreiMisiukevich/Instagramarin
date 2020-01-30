@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true"
+             Visual="Material"
+             Title="{Binding Id}"
+             BackgroundColor="{StaticResource PageBackgroundColor}"
+             x:Class="Instagramarin.ProfilePage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="PageBackgroundColor">#fafafa</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView x:Name="RootScrollView" Scrolled="OnRootScrollViewScrolled">
+        <AbsoluteLayout>
+            <!--Profile Part-->
+            <StackLayout
+                x:Name="ProfileLayout"
+                AbsoluteLayout.LayoutFlags="WidthProportional"
+                AbsoluteLayout.LayoutBounds="0,0,1,350"
+                Padding="0, 10"
+                Spacing="15">
+                <StackLayout
+                    Margin="15,0"
+                    Orientation="Horizontal"
+                    HeightRequest="100"
+                    Spacing="0">
+
+                    <Frame
+                        HeightRequest="100"
+                        WidthRequest="100"
+                        CornerRadius="50"
+                        IsClippedToBounds="True"
+                        Padding="0"
+                        HasShadow="False">
+                        <Image Source="{Binding AvatarUrl}" Aspect="AspectFill"/>
+                    </Frame>
+
+                    <StackLayout
+                        BindableLayout.ItemsSource="{Binding HeaderItems}"
+                        Spacing="20"
+                        Orientation="Horizontal"
+                        HorizontalOptions="CenterAndExpand">
+
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate> 
+                                <StackLayout Spacing="0" VerticalOptions="Center">
+                                    <Label Text="{Binding Value}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="20"/>
+                                    <Label Text="{Binding Title}" HorizontalOptions="Center" FontSize="16"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+
+                    </StackLayout>
+
+                </StackLayout>
+                <Label Margin="15,0" Text="{Binding Name}" FontAttributes="Bold" FontSize="16" />
+                <Button Margin="15,0" Text="Edit Profile" HeightRequest="30" BackgroundColor="White" TextColor="Black" CornerRadius="5" BorderWidth="1" BorderColor="Gray" FontAttributes="Bold" FontSize="16"/>
+                <StackLayout Margin="15,0" Spacing="0">
+                    <Label Text="Story Highlights" FontAttributes="Bold" FontSize="16" />
+                    <Label Text="Keep your favourite stories on your profile" FontSize="16" />  
+                </StackLayout>
+                <ScrollView Padding="15,0" Orientation="Horizontal" HeightRequest="80" HorizontalScrollBarVisibility="Never">
+                    <StackLayout BindableLayout.ItemsSource="{Binding Stories}" Orientation="Horizontal" Spacing="20">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Spacing="5">
+                                    <Frame BackgroundColor="LightGray" HasShadow="False" Padding="0" IsClippedToBounds="True" HeightRequest="60" WidthRequest="60" CornerRadius="30">
+                                        <Image Source="{Binding ImageUrl}" Aspect="AspectFill"/>
+                                    </Frame>
+                                    <Label Text="{Binding Text}" HorizontalOptions="Center" FontSize="16"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+
+            <!--Grid Part-->
+            <StackLayout
+                x:Name="ImagesLayout"
+                AbsoluteLayout.LayoutFlags="WidthProportional"
+                AbsoluteLayout.LayoutBounds="0,350,1,1000">
+                <BoxView Color="Red" />
+                <BoxView Color="Red" />
+                <BoxView Color="Red" />
+                <BoxView Color="Red" />
+                <BoxView Color="Red" />
+                <BoxView Color="Red" />
+                <BoxView Color="Red" />
+                <BoxView Color="Red" />
+                <BoxView Color="Red" />
+                <BoxView Color="Red" />
+                <BoxView Color="Red" />
+                <BoxView Color="Red" />
+            </StackLayout>
+
+            <!--Tabs Part-->
+            <ContentView
+                x:Name="TabsLayout"
+                AbsoluteLayout.LayoutFlags="WidthProportional"
+                AbsoluteLayout.LayoutBounds="0,350,1,50"
+                BackgroundColor="Gold">
+                <Label Text="I am Sticky" VerticalOptions="Center" HorizontalOptions="Center"/>
+            </ContentView>
+
+        </AbsoluteLayout>
+    </ScrollView>
+</ContentPage>
